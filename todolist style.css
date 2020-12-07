@@ -1,0 +1,44 @@
+body {
+  margin-top: 50px;
+  background: slategrey;
+}
+
+
+
+#pointsdisplay {
+  height: 10%;
+}
+
+.ui.grid {
+  height: 100%;
+}
+#desc_input{
+  resize: none;
+  width: 100%;
+}
+
+/*
+
+.ui.segment{
+  background: dimgray;
+  color: white;
+
+}
+
+input[type="text"]{
+
+  background-color : #d1d1d1;
+
+}
+
+
+
+.ui.input{
+  background-color: black;
+  background: black;
+  color: red;
+}
+*/
+#taskdate, #greeting{
+  text-align: center;
+}
