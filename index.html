@@ -1,22 +1,398 @@
-<html>
-	<head>
-		<link rel="stylesheet" type="text/css" href="interface.css" />
-	</head>
-	
-	<body>
-		<h1> My Game </h1>
-		
-		 <br/>Normal numbers = <span id="numbers"> 0 </span>
-		
-		<br/><button type="button" onClick="Click(10)">click</button> 
-		<br/><button type="button" onClick="buyCursor(1)">buy click</button>
-		<br/>Cursors: <span id="cursors">0</span>
-		<br/>Cost: <span id="cursorCost">10</span>
-		
-		<br/><button type="button" onClick="Save()">SAVE</button>
-		<button type="button" onClick="Load()">LOAD</button> 
-		<button type="button" onClick="Deletesave">Delete Save</button> 
+<!DOCTYPE html>
+<html lang="en">
 
-		<script type="text/javascript" src="main.js"></script>
-	</body>
+<head>
+  <meta charset="UTF-8">
+  <title>Todolist</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.css">
+  <link rel="stylesheet" href="todolist%20style.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.min.js"></script>
+
+
+</head>
+
+<body>
+<div class="ui stretched grid">
+  <div class="two wide two tall column">
+  <div class="ui vertical fluid tabular menu" >
+    <a class="item active" data-tab="tab1" id="menu1">HomePage</a>
+    <a class="item" data-tab="tab2"id="menu2"> Tasks</a>
+    <a class="item" data-tab="tab3" id="menu3">Tutorial</a>
+    <a class="item" data-tab="tab4" id="menu4">Settings</a>
+  </div>
+  </div>
+
+  <div class="thirteen wide stretched column">
+
+  <div class="ui active vertical tab segment" id="home" data-tab="tab1">
+
+    <div class="ui center aligned raised segment" >
+    <h1 id="greeting">
+      <div class="content">
+        <i class="hand paper icon"></i>
+        Hello User
+      </div>
+    </h1>
+    </div>
+    <div class="ui horizontal segments">
+      <div class="ui raised segment" >
+        <p>
+          These are your top 5 tasks:
+        </p>
+      </div>
+
+      <a class="ui basic label">
+        SORT BY:
+      </a>
+      <div class="ui buttons">
+        <button class="ui button" data-sortB >A-Z</button>
+        <button class="ui button" data-sortB>Z-A</button>
+        <button class="ui button" data-sortB>1-100</button>
+        <button class="ui button" data-sortB>100-1</button>
+        <button class="ui button" data-sortB>1/11/1111</button>
+      </div>
+
+    </div>
+
+    <div id="homepage_tasks" >
+
+    </div>
+
+  </div>
+
+  <div class="ui vertical tab segment" id="task_display" data-tab="tab2">
+    <div class="ui raised green segment" >
+      <p id="task_editor_title">Inputs for a new task</p>
+
+
+      <div class="ui horizontal segments">
+        <div class="ui segment">
+          <div class="ui fluid input">
+            <input type="text" placeholder="Task Name" id="name_input">
+            <input type="date" placeholder="Task Date" id="date_input">
+            <input type="number" placeholder="Task Priority" id="priority_input" min="0" value=0>
+          </div>
+        </div>
+        </div>
+
+      <div class="ui segment">
+        <textarea id="desc_input" placeholder="Task Description" rows="4"></textarea>
+      </div>
+
+
+      <div class="ui buttons">
+        <button class="ui button" id="addtask_button">
+          Add Task
+        </button>
+        <button class="ui button" id="deletetask_button">
+          Delete Task
+        </button>
+        <button class="ui button" id="clearinput_button">
+          Clear All Inputs
+        </button>
+      </div>
+      <a class="ui basic label">
+        SORT BY:
+      </a>
+      <div class="ui buttons">
+        <button class="ui button" data-sortB>A-Z</button>
+        <button class="ui button" data-sortB>Z-A</button>
+        <button class="ui button" data-sortB>1-100</button>
+        <button class="ui button" data-sortB>100-1</button>
+        <button class="ui button" data-sortB>1/11/1111</button>
+      </div>
+    </div>
+    <!--
+    <div class="ui raised segment">
+      task format reference. to be removed
+      <div class="ui horizontal segments">
+        <div class="ui segment">
+          example task name
+        </div>
+        <div class="ui segment">
+          example date
+        </div>
+        <div class="ui segment">
+          example priority
+        </div>
+      </div>
+      <div class="ui raised segment">
+        example task description
+      </div>
+      <button class="ui button">
+        Edit Task
+      </button>
+      <button class="ui button">
+        Compelete Task
+      </button>
+      <div class="ui secondary segment">
+        Subtask format reference
+        <div class="ui horizontal segments">
+          <div class="ui segment">
+            example task name
+          </div>
+          <div class="ui segment">
+            example date
+          </div>
+          <div class="ui segment">
+            example priority
+          </div>
+        </div>
+        <div class="ui raised segment">
+          example task description
+        </div>
+        <button class="ui button" >
+          Edit Task
+        </button>
+        <button class="ui button" >
+          Compelete Task
+        </button>
+      </div>
+
+    </div>
+-->
+
+    <div id="tasks">
+
+    </div>
+  </div>
+  <div class="ui vertical tab segment" id="Tutorial" data-tab="tab3">
+    <br>
+    <div class="ui segment">
+      <p>
+        Hello and welcome to the todo list <br>
+        this page is designated for guides on the features of this app
+      </p>
+      <p>
+
+        |---------HomePage---------|
+        <br>
+
+
+        <b>Overview</b>
+        <br>
+        The home page is the first page you'll see when using this app, it displays the tasks due for the day or alternatively you can change it to display the top 5 priority tasks.
+        The home page also greet you with your desired username and you can complete tasks there as well.
+        <br>
+
+
+      <b>Task Completion</b>
+
+      <br>
+      to complete tasks on the home page a complete task button similar to the task page will appear next to the task.
+        Pressing this button will complete the task and remove it from the tasks list awarding points and updates the streak counter if required.
+
+
+      </p>
+
+      <p>
+        |---------taskPage---------|
+        <br>
+        <b>Task Completion</b>
+        <br>
+        To complete task on the task page all that is needed is to press the desired tasks complete task button which will remove the task from the tasks and homepage updating the points and streak counter if required
+        <br>
+
+        <b>Task Deletion</b>
+        <br>
+        To Delete a task all that is needed is to press the delete task button which will remove the task from both the homepage and the tasks page
+
+        <br>
+
+        <b>Edit Task</b>
+        <br>
+        To edit a task simply press the edit task button on the desired task at which point the task will appear at the top in the elements portion of the task page. in this section every elements of the selected task will appear and can be changed. Once statisfied with the changed click the reconfigure button and the task will be reinserted into the task list
+
+        <br>
+
+        <b>Clear all inputs</b>
+        <br>
+        the clear all inputs button removes all input data for adding or editing a task
+
+
+      </p>
+      <p>
+        <b><i>|---------settingsPage---------|</i></b>
+        <br>
+        <br>
+        <b>Load Data</b>
+        <br>
+
+
+        <br>
+        <b>Save Data</b>
+        <br>
+
+        <br>
+        <b> Change/Update Username</b>
+        <br>
+        This box on the settings page enables you to change the user name you would like which will be displayed on the home page after hitting the apply button
+
+        <br>
+        <b>Change UI Color</b>
+        <br>
+        This dropdown menu changes the Ui Backround color from a limited color pallet it will not allow the color to be the same as the font color
+
+        <br>
+        <b>Change Font Color</b>
+        <br>
+        This dropdown menu changes the font color from a limited color pallet, it will not allow the color to be the same as the UI color
+
+        <br>
+        <b>Change Font</b>
+        <br>
+        This dropdown meanu changes the font for the app
+
+        <br>
+        <b>Reset Points</b>
+        <br>
+        This button lets you reset your points if you desire.
+
+        <br>
+        <b>Reset Streak</b>
+        <br>
+        This button lets you reset your streak if you desire
+
+        <br>
+        <b>Cheat Mode</b>
+        <br>
+        Used for testing purposes
+      </p>
+    </div>
+  </div>
+  <div class="ui vertical tab segment" id="settings" data-tab="tab4">
+   <br>
+    <div class="ui segment">
+      <p>
+      <button id="save_button" class="ui button">save data</button>
+        desciption
+      </p>
+      <p>
+        <button id="load_button" class="ui button">load data</button>
+        desciption
+      </p>
+      <p>
+        <button id="saveAll_button"  class="ui button">apply Settings</button>
+        applys all setting at the same time
+      </p>
+      <p>
+      <div class="ui input">
+        <input id="username_input" type="text" placeholder="username">
+      </div>
+      <button id='username_button' class="ui button">apply</button>
+
+
+      </p>
+
+      <p>
+      <div class="ui selection dropdown">
+        <input type="hidden" name="UI color" id="background_setting">
+        <i class="dropdown icon"></i>
+        <div class="default text">UI Color</div>
+        <div class="menu">
+          <div class="item" data-value="red">Red</div>
+          <div class="item" data-value="blue">Blue</div>
+          <div class="item" data-value="green">Green</div>
+          <div class="item" data-value="slategray">Slategray</div>
+        </div>
+      </div>
+      <button class="ui button" id="apply_background_setting">apply</button>
+
+      </p>
+      <p>
+      <div class="ui selection dropdown">
+        <input type="hidden" name="Font" id= "font_setting">
+        <i class="dropdown icon"></i>
+        <div class="default text">font</div>
+        <div class="menu">
+          <div class="item" data-value="Times New roman">Times New roman</div>
+          <div class="item" data-value="Arial">Arial</div>
+          <div  class="item" data-value="Calibri">Calibri</div>
+          <div  class="item" data-value="Impact">Impact</div>
+        </div>
+      </div>
+      <button class="ui button" id="font_button">apply</button>
+      </p>
+      <p>
+      <div class="ui selection dropdown">
+        <input type="hidden" name="Font Color" id="font_color_setting">
+        <i class="dropdown icon"></i>
+        <div class="default text">Font Color</div>
+        <div class="menu">
+          <div class="item" data-value="red">Red</div>
+          <div class="item" data-value="blue">Blue</div>
+          <div class="item" data-value="black">Black</div>
+        </div>
+      </div>
+      <button class="ui button" id="font_color_button">apply</button>
+
+      </p>
+
+      <p>
+        <button id="point_reset_button" class="ui button">reset points</button>
+        resets points
+      </p>
+      <p>
+        <button id="streak_reset_button" class="ui button">reset streak</button>
+        resets streak
+      </p>
+      <p>
+      cheat mode
+      <div class="ui input">
+        <input type="text" placeholder="admin password">
+      </div>
+      <button id='adminUser' class="ui button">enter</button>
+
+      </p>
+
+    </div>
+  </div>
+
+  </div>
+
+
+  <div class="one wide stretched column" id="pointsdisplay" >
+
+    <div class="ui raised segment">
+      Today is
+    </br>
+      <div id="currentdate">
+        0/00/00
+      </div>
+    </div>
+    <div class="ui raised segment">
+      points
+      <br>
+      <div class="ui black inverted segment" id="points">
+        0
+      </div>
+    </div>
+    <div class="ui raised segment">
+      streak
+      <br>
+      <div class="ui black inverted segment" id="streak">
+        0
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+</body>
+<!-- script to make sematic UI work -->
+<script type="text/javascript">
+  $('.tabular.menu .item').tab();
+  $('.ui.dropdown').dropdown();
+
+</script>
+
+<footer>
+  <section class="footer-info">
+    TodoList by Kevin Zavadlov and Riley Barnes
+  </section>
+</footer>
+<script type="text/javascript" src="controller.js"></script>
+
 </html>
