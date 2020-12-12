@@ -20,6 +20,7 @@
     <a class="item" data-tab="tab2"id="menu2"> Tasks</a>
     <a class="item" data-tab="tab3" id="menu3">Tutorial</a>
     <a class="item" data-tab="tab4" id="menu4">Settings</a>
+    <a class="item" data-tab="tab5" id="menu5">Cheats</a>
   </div>
   </div>
 
@@ -31,14 +32,14 @@
     <h1 id="greeting">
       <div class="content">
         <i class="hand paper icon"></i>
-        Hello User
+        <div id="usergreeting">Hello User</div>
       </div>
     </h1>
     </div>
     <div class="ui horizontal segments">
       <div class="ui raised segment" >
         <p>
-          These are your top 5 tasks:
+        <div id="topresults">These are your top 5 tasks:</div>
         </p>
       </div>
 
@@ -172,17 +173,18 @@
 
         <b>Overview</b>
         <br>
-        The home page is the first page you'll see when using this app, it displays the tasks due for the day or alternatively you can change it to display the top 5 priority tasks.
-        The home page also greet you with your desired username and you can complete tasks there as well.
+        <p>
+        The home page is the first page you'll see when using this app, it displays the top 5 tasks by default but can be edited in the settings to 10 and 15.
+        The home page will also greet you with your desired username and you can complete tasks. this page can also be sorted by a-z, z-a, 1-100, 100-1, and date.
+        </p>
         <br>
 
 
       <b>Task Completion</b>
 
       <br>
-      to complete tasks on the home page a complete task button similar to the task page will appear next to the task.
-        Pressing this button will complete the task and remove it from the tasks list awarding points and updates the streak counter if required.
-
+        <p>to complete tasks on the home page a complete task button similar to the task page will appear next to the task.
+      Pressing this button will complete the task and remove it from the tasks list awarding points and updates the streak counter if required. </p>
 
       </p>
 
@@ -191,25 +193,25 @@
         <br>
         <b>Task Completion</b>
         <br>
-        To complete task on the task page all that is needed is to press the desired tasks complete task button which will remove the task from the tasks and homepage updating the points and streak counter if required
+        <p>To complete task on the task page all that is needed is to press the desired tasks complete task button which will remove the task from the tasks and homepage updating the points and streak counter if required
+        </p>
         <br>
 
         <b>Task Deletion</b>
-        <br>
-        To Delete a task all that is needed is to press the delete task button which will remove the task from both the homepage and the tasks page
+      <p>To Delete a task all that is needed is to press the delete task button which will remove the task from both the homepage and the tasks page </p>
+
 
         <br>
 
         <b>Edit Task</b>
-        <br>
-        To edit a task simply press the edit task button on the desired task at which point the task will appear at the top in the elements portion of the task page. in this section every elements of the selected task will appear and can be changed. Once statisfied with the changed click the reconfigure button and the task will be reinserted into the task list
+        <p>To edit a task simply press the edit task button on the desired task at which point the task will appear at the top in the elements portion of the task page. in this section every elements of the selected task will appear and can be changed. Once statisfied with the changed click the reconfigure button and the task will be reinserted into the task list
+    </p>
 
         <br>
 
         <b>Clear all inputs</b>
         <br>
-        the clear all inputs button removes all input data for adding or editing a task
-
+      <p>the clear all inputs button removes all input data for adding or editing a task</p>
 
       </p>
       <p>
@@ -218,21 +220,26 @@
         <br>
         <b>Load Data</b>
         <br>
-
-
-        <br>
+      <p>this will allow you to load local saved data to the app so you can pick up from where you left off on a todolist it will only work if you have applied the previous username that you used</p>
+      <br>
         <b>Save Data</b>
         <br>
+      <p>this saves the state of the app so that you can come back to it later using your username as a way to retrieve it again </p>
+        <br>
+        <b> apply all settings</b>
+        <br>
+        this button applys all changes in the below settings if you want to apply them all at once
 
         <br>
         <b> Change/Update Username</b>
         <br>
         This box on the settings page enables you to change the user name you would like which will be displayed on the home page after hitting the apply button
-
         <br>
+
+
         <b>Change UI Color</b>
         <br>
-        This dropdown menu changes the Ui Backround color from a limited color pallet it will not allow the color to be the same as the font color
+        This dropdown menu changes the Ui Background color from a limited color pallet it will not allow the color to be the same as the font color
 
         <br>
         <b>Change Font Color</b>
@@ -242,7 +249,7 @@
         <br>
         <b>Change Font</b>
         <br>
-        This dropdown meanu changes the font for the app
+        This dropdown menu changes the font for the app
 
         <br>
         <b>Reset Points</b>
@@ -253,7 +260,10 @@
         <b>Reset Streak</b>
         <br>
         This button lets you reset your streak if you desire
-
+        <br>
+        <b>home page top X results</b>
+        <br>
+        this will change the amount of tasks shown on the homepage
         <br>
         <b>Cheat Mode</b>
         <br>
@@ -266,11 +276,11 @@
     <div class="ui segment">
       <p>
       <button id="save_button" class="ui button">save data</button>
-        desciption
+
       </p>
       <p>
         <button id="load_button" class="ui button">load data</button>
-        desciption
+
       </p>
       <p>
         <button id="saveAll_button"  class="ui button">apply Settings</button>
@@ -286,49 +296,59 @@
       </p>
 
       <p>
-      <div class="ui selection dropdown">
-        <input type="hidden" name="UI color" id="background_setting">
-        <i class="dropdown icon"></i>
-        <div class="default text">UI Color</div>
-        <div class="menu">
-          <div class="item" data-value="red">Red</div>
-          <div class="item" data-value="blue">Blue</div>
-          <div class="item" data-value="green">Green</div>
-          <div class="item" data-value="slategray">Slategray</div>
+        <div class="ui selection dropdown">
+          <input type="hidden" name="UI color" id="background_setting">
+          <i class="dropdown icon"></i>
+          <div class="default text">UI Color</div>
+          <div class="menu">
+            <div class="item" data-value="red">Red</div>
+            <div class="item" data-value="blue">Blue</div>
+            <div class="item" data-value="green">Green</div>
+            <div class="item" data-value="slategray">Slategray</div>
+          </div>
         </div>
-      </div>
-      <button class="ui button" id="apply_background_setting">apply</button>
-
+        <button class="ui button" id="apply_background_setting">apply</button>
       </p>
       <p>
-      <div class="ui selection dropdown">
-        <input type="hidden" name="Font" id= "font_setting">
-        <i class="dropdown icon"></i>
-        <div class="default text">font</div>
-        <div class="menu">
-          <div class="item" data-value="Times New roman">Times New roman</div>
-          <div class="item" data-value="Arial">Arial</div>
-          <div  class="item" data-value="Calibri">Calibri</div>
-          <div  class="item" data-value="Impact">Impact</div>
+        <div class="ui selection dropdown">
+          <input type="hidden" name="Font" id= "font_setting">
+          <i class="dropdown icon"></i>
+          <div class="default text">font</div>
+          <div class="menu">
+            <div class="item" data-value="Times New roman">Times New roman</div>
+            <div class="item" data-value="Arial">Arial</div>
+            <div  class="item" data-value="Calibri">Calibri</div>
+            <div  class="item" data-value="Impact">Impact</div>
+          </div>
         </div>
-      </div>
-      <button class="ui button" id="font_button">apply</button>
+        <button class="ui button" id="font_button">apply</button>
       </p>
       <p>
-      <div class="ui selection dropdown">
-        <input type="hidden" name="Font Color" id="font_color_setting">
-        <i class="dropdown icon"></i>
-        <div class="default text">Font Color</div>
-        <div class="menu">
-          <div class="item" data-value="red">Red</div>
-          <div class="item" data-value="blue">Blue</div>
-          <div class="item" data-value="black">Black</div>
+        <div class="ui selection dropdown">
+          <input type="hidden" name="Font Color" id="font_color_setting">
+          <i class="dropdown icon"></i>
+          <div class="default text">Font Color</div>
+          <div class="menu">
+            <div class="item" data-value="red">Red</div>
+            <div class="item" data-value="blue">Blue</div>
+            <div class="item" data-value="black">Black</div>
+          </div>
         </div>
-      </div>
-      <button class="ui button" id="font_color_button">apply</button>
-
+        <button class="ui button" id="font_color_button">apply</button>
       </p>
-
+      <p>
+        <div class="ui selection dropdown">
+          <input type="hidden" name="Font Color" id="top_X_results_setting">
+          <i class="dropdown icon"></i>
+          <div class="default text">Home Page top X results</div>
+          <div class="menu">
+            <div class="item" data-value="5">5</div>
+            <div class="item" data-value="10">10</div>
+            <div class="item" data-value="15">15</div>
+          </div>
+        </div>
+        <button class="ui button" id="top_X_results_button">apply</button>
+      </p>
       <p>
         <button id="point_reset_button" class="ui button">reset points</button>
         resets points
@@ -337,10 +357,11 @@
         <button id="streak_reset_button" class="ui button">reset streak</button>
         resets streak
       </p>
+
       <p>
       cheat mode
       <div class="ui input">
-        <input type="text" placeholder="admin password">
+        <input type="text" id="cheatPassword" placeholder="admin password">
       </div>
       <button id='adminUser' class="ui button">enter</button>
 
@@ -348,6 +369,16 @@
 
     </div>
   </div>
+
+    <div class="ui vertical tab segment" id="cheats" data-tab="tab5">
+      <br>
+      <div class="ui segment">
+        <button class="ui button" id="cheat_increase_points">increase point</button>
+        <button class="ui button" id="cheat_decrease_points">decrease point</button>
+        <button class="ui button" id="cheat_increase_streak">increase streak</button>
+        <button class="ui button" id="cheat_decrease_streak">decrease streak</button>
+      </div>
+    </div>
 
   </div>
 
@@ -396,4 +427,3 @@
 <script type="text/javascript" src="controller.js"></script>
 
 </html>
-

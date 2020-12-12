@@ -8,6 +8,9 @@ body {
 #pointsdisplay {
   height: 10%;
 }
+#menu5{
+  visibility: hidden;
+}
 
 .ui.grid {
   height: 100%;
