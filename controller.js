@@ -150,7 +150,7 @@ class List {
   }
 
   sortZA() {
-    this.tasks.sort((a, b) => (strToInt(b.name) - strToInt(a.name)));
+    this.tasks.sort((a, b) => (strToInt(b.name.toLowerCase()) - strToInt(a.name.toLowerCase())));
     maintodolist.sorttype = 'Z-A';
   }
 
@@ -171,10 +171,6 @@ class List {
 
   resetPoints() {
     this.points = 0;
-  }
-
-  changeTopXtoshow(int) {
-    this.showTopXhome = int;
   }
 
   resetStreak() {
@@ -481,25 +477,32 @@ function saveAllSettings() {
   changeTopXHomePage();
 }
 function changeUsername() {
-  maintodolist.changeUsername(document.getElementById('username_input').value);
+  const setting = document.getElementById('username_input').value;
+  if (setting === '') {
+    return;
+  }
+  maintodolist.changeUsername(setting);
   document.getElementById('username_input').value = '';
-  document.getElementById('usergreeting').innerText = `Hello ${maintodolist.username}`;
+  document.getElementById('usergreeting').innerText = `Hello ${setting}`;
 }
 function resetPoints() {
   maintodolist.resetPoints();
   pointsdisplay.innerText = maintodolist.points;
+  displayTasks();
 }
 function resetStreak() {
   maintodolist.resetStreak();
   pointsdisplay.innerText = maintodolist.streak;
+  displayTasks();
 }
 function changeTopXHomePage() {
   const setting = document.getElementById('top_X_results_setting').value;
   if (setting === '') {
     return;
   }
-  maintodolist.changeTopXtoshow(setting);
+  maintodolist.showTopXhome = setting;
   topRs.innerText = `These are your top ${setting} tasks`;
+  displayTasks();
 }
 function changeUiColor() {
   const setting = document.getElementById('background_setting').value;
@@ -529,19 +532,23 @@ function adminCheatMode() {
 function cheatIncreasePs() {
   maintodolist.increaseP();
   pointsdisplay.innerText = maintodolist.points;
+  displayTasks();
 }
 function cheatDecreasePs() {
   maintodolist.decreaseP();
   pointsdisplay.innerText = maintodolist.points;
+  displayTasks();
 }
 function cheatIncreaseS() {
   maintodolist.increaseS();
-  pointsdisplay.innerText = maintodolist.streak;
+  streakdisplay.innerText = maintodolist.streak;
+  displayTasks();
 }
 
 function cheatdecreaseS() {
   maintodolist.decreaseS();
-  pointsdisplay.innerText = maintodolist.streak;
+  streakdisplay.innerText = maintodolist.streak;
+  displayTasks();
 }
 
 // helper function since JS doesnt recognize strings as ints in any easy way
